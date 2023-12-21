@@ -1,0 +1,35 @@
+{% extends "pacman/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div id = "movingButtons">
+        <div class="centered">
+            <button id="moveUp" class="btn btn-primary"> Up </button>
+        </div>
+        
+        <div class="centered">
+            <div class="inlineButton">
+                <button id="moveLeft" class="btn btn-dark"> Left </button>
+            </div>
+            <div class="inlineButton">
+                <button id="moveRight" class="btn btn-dark"> Right </button>
+            </div>
+        </div>
+
+        <div class="centered">
+            <button id="moveDown" class="btn btn-primary"> Down </button>
+        </div>
+    </div>
+
+    <br>
+
+    <div id = "scoreDisplay"></div>
+
+    <br>
+
+    <canvas id="myCanvas"></canvas>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'pacman/indexPac.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,33 @@
+body {
+    margin: 10px;
+}
+
+.html {
+    height: 100%;
+    width: 100%;
+}
+
+#myCanvas{
+    background-color: black;
+}
+
+.inlineButton {
+    display: inline-block;
+    margin: 10px;
+}
+
+.movingButtons {
+    text-align: center;
+}
+
+.centered {
+    margin: auto;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    width: 70px;
+}
