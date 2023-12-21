@@ -22,16 +22,15 @@
             </li>
             {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'create_listing' %}">Create Listing</a>
+                    <a class="nav-link" href=""> Previous Games </a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'watchlist' %}">Watchlist</a>
+                    <a class="nav-link" href=""> Challenges Sent </a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'category' %}">Categories</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                    <a class="nav-link" href=""> Challenges Received </a>
                 </li>
             {% else %}
                 <li class="nav-item">

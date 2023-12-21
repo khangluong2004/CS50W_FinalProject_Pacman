@@ -548,10 +548,15 @@ class GamePac {
         this.ghost.move(this.player.position);
     }
 
+    show_result(){
+        document.querySelector("#scoreDisplay").innerHTML = `Score: ${this.player.score}`;
+    }
+
     // Infinite animation
     animation(){
         if (this.end == true){
             this.draw_frame();
+            this.show_result();
             return;
         }
 
