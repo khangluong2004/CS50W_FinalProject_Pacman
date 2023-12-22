@@ -7,7 +7,6 @@ const PACMAN_SIZE = SQUARE_SIZE * 0.4 - JIGGER;
 const PELLET_SIZE = 3;
 
 
-
 const VELOCITY_UNIT = 6;
 const GHOST_VELOCITY = VELOCITY_UNIT * 0.7;
 
@@ -552,11 +551,23 @@ class GamePac {
         document.querySelector("#scoreDisplay").innerHTML = `Score: ${this.player.score}`;
     }
 
+    show_challenge(){
+        let formDiv = document.querySelector("#challengeFormDiv"); 
+
+        // Update the score
+        let scoreInput = formDiv.querySelector("#score");
+        scoreInput.value = this.player.score;
+
+        // Display form
+        formDiv.style.display = "flex";
+    }
+
     // Infinite animation
     animation(){
         if (this.end == true){
             this.draw_frame();
             this.show_result();
+            this.show_challenge();
             return;
         }
 

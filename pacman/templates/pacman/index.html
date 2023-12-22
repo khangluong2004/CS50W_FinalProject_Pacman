@@ -2,29 +2,41 @@
 {% load static %}
 
 {% block body %}
-    <div id = "movingButtons">
-        <div class="centered">
-            <button id="moveUp" class="btn btn-primary"> Up </button>
-        </div>
-        
-        <div class="centered">
-            <div class="inlineButton">
-                <button id="moveLeft" class="btn btn-dark"> Left </button>
-            </div>
-            <div class="inlineButton">
-                <button id="moveRight" class="btn btn-dark"> Right </button>
-            </div>
-        </div>
-
-        <div class="centered">
-            <button id="moveDown" class="btn btn-primary"> Down </button>
-        </div>
+    <div class="centered">
+        <h5 id = "scoreDisplay"></h5>
     </div>
 
     <br>
 
-    <div class="centered">
-        <h5 id = "scoreDisplay"></h5>
+    <div id="challengeFormDiv" class="centered" style="display: none;">
+        <form id="challengeForm" class="form-inline">
+            <input id="score" type="hidden" >
+            <div class="form-group mx-sm-3 mb-2">
+                <input id="receiverText" type="text" class="form-control" placeholder="Enter receiver's username">
+            </div>
+            <button id="challengeButton" type="submit" class="btn btn-primary mb-2"> Challenge </button>
+        </form>
+    </div>
+
+    <br>
+
+    <div>
+        <div class="centered">
+            <button id="moveUp" class="btn btn-primary movingButton"> Up </button>
+        </div>
+        
+        <div class="centered">
+            <div class="inlineButton">
+                <button id="moveLeft" class="btn btn-dark movingButton"> Left </button>
+            </div>
+            <div class="inlineButton">
+                <button id="moveRight" class="btn btn-dark movingButton"> Right </button>
+            </div>
+        </div>
+
+        <div class="centered">
+            <button id="moveDown" class="btn btn-primary movingButton"> Down </button>
+        </div>
     </div>
 
     <br>
@@ -33,5 +45,6 @@
 {% endblock %}
 
 {% block script %}
+    <script src="{% static 'pacman/challenge.js' %}"></script>
     <script src="{% static 'pacman/indexPac.js' %}"></script>
 {% endblock %}

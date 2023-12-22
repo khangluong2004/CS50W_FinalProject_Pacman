@@ -1,0 +1,25 @@
+{% extends "pacman/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <h2> Challenges {{mode}} </h2>
+    {% for challenge in challenges %}
+        <div class="challengeDiv">
+            <p> <strong> Sender: </strong> {{challenge.sender.username}} </p>
+            <p> <strong> Receiver: </strong> {{challenge.receiver.username}} </p>
+            <p> <strong> Bet Score: </strong> {{challenge.bet_score}} </p>
+
+            {% if challenge.finalized %}
+                <button id="acceptButton" class="btn btn-primary" href="/?accept=true&id={{challenge.id}}">
+                    Accept 
+                </button>
+            {% else %}
+                {% if challenge.senderWin %}
+                    <p> <strong> Sender Win </strong> </p>
+                {% else %}
+                    <p> <strong> Receiver Win </strong> </p>
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endblock %}

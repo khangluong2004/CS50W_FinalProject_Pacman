@@ -16,8 +16,9 @@ body {
     margin: 10px;
 }
 
-.movingButtons {
+.movingButton {
     text-align: center;
+    width: 70px;
 }
 
 .centered {
@@ -28,6 +29,9 @@ body {
     align-items: center;
 }
 
-button {
-    width: 70px;
+.challengeDiv {
+    margin: 10px;
+    padding: 10px;
+    border: solid 1px rgb(176, 171, 171);
+    border-radius: 5px;
 }
