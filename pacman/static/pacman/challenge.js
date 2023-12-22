@@ -15,7 +15,7 @@ function submitChallenge(event, challengeForm){
         method: "POST",
         body: JSON.stringify({
             "receiver": receiver,
-            "score": score
+            "bet_score": score
         })
     }).then(response => response.json())
     .then(response => console.log(response))

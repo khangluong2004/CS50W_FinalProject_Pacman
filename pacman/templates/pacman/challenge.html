@@ -7,14 +7,22 @@
         <div class="challengeDiv">
             <p> <strong> Sender: </strong> {{challenge.sender.username}} </p>
             <p> <strong> Receiver: </strong> {{challenge.receiver.username}} </p>
-            <p> <strong> Bet Score: </strong> {{challenge.bet_score}} </p>
+            {% if mode == "sent" %}
+                <p> <strong> Bet Score: </strong> {{challenge.bet_score}} </p>
+            {% endif %}
 
-            {% if challenge.finalized %}
-                <button id="acceptButton" class="btn btn-primary" href="/?accept=true&id={{challenge.id}}">
-                    Accept 
-                </button>
+            {% if not challenge.finalized %}
+                {% if mode == "received" %}
+                    <a href="/?accept=true&id={{challenge.id}}">
+                        <button id="acceptButton" class="btn btn-primary">
+                            Accept 
+                        </button>
+                    </a>
+                {% else %}
+                    <p> <strong> Not attempted </strong></p>
+                {% endif %}
             {% else %}
-                {% if challenge.senderWin %}
+                {% if challenge.sender_win %}
                     <p> <strong> Sender Win </strong> </p>
                 {% else %}
                     <p> <strong> Receiver Win </strong> </p>

@@ -4,6 +4,9 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
+
+    path("profile", views.profile, name="profile"),
+
     path("challenges/<str:mode>", views.get_challenge, name="getChallenge"),
     path("challenges/services/send", views.send_challenge, name = "sendChallenge"),
     path("challenges/services/update", views.update_challenge, name = "updateChallenge"),

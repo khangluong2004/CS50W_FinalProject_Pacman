@@ -1,0 +1,9 @@
+{% extends "pacman/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <h2> {{user_entry.username}} </h2>
+    <p><strong> Total score: </strong> {{user_entry.score}} </p>
+    <p><strong> Challenge sent: </strong> {{user_entry.challenge_sent}} </p>
+    <p><strong> Challenge win: </strong> {{user_entry.challenge_win}} </p>
+{% endblock %}

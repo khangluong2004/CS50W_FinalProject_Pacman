@@ -1,5 +1,7 @@
 import json
 
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
@@ -11,18 +13,22 @@ from .models import User, Challenges
 # Create your views here.
 
 # Get challenges 
+@login_required
 def get_challenge(request, mode):
     challenges = None
     if mode == "sent":
         challenges = Challenges.objects.filter(sender = request.user).all()
     elif mode == "received":
         challenges = Challenges.objects.filter(receiver = request.user).all()
+    print(challenges)
     return render(request, "pacman/challenge.html", {
         "mode": mode,
         "challenges": challenges
     })
 
 # Send a challenge
+@login_required
+@csrf_exempt
 def send_challenge(request):
     if request.method == "POST":
         print("send challenge")
@@ -43,6 +49,8 @@ def send_challenge(request):
         return JsonResponse({"message": "Successful challenge creation"}, status = 201)
 
 # Update challenge after accept
+@login_required
+@csrf_exempt
 def update_challenge(request):
     if request.method == "PUT":
         data = json.loads(request.body)
@@ -53,6 +61,10 @@ def update_challenge(request):
         challenge_entry = Challenges.objects.get(id = challenge_id)
         sender = User.objects.get(username = challenge_entry.sender.username)
         receiver = User.objects.get(username = challenge_entry.receiver.username)
+
+        # Only correct receiver can call the function
+        if (request.user != receiver):
+            return HttpResponse("Incorrect receiver. Forbidden.", status = 403)
 
         # Update the score of sender and receiver
         if (challenge_score >= challenge_entry.bet_score):
@@ -79,11 +91,35 @@ def update_challenge(request):
 
         return JsonResponse({"message": "Successful update"}, status = 201)
 
+# Get the user profile
+@login_required
+def profile(request):
+    if request.method == "GET":
+        user_entry = User.objects.get(username = request.user.username)
+
+        return render(request, "pacman/profile.html", {
+            "user_entry": user_entry
+        })
+
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("login"))
     else:
-        return render(request, "pacman/index.html")
+        accept = False
+        getId = ""
+        if "accept" in request.GET and request.GET["accept"] == "true":
+            accept = True
+            getId = int(request.GET["id"])
+
+            # Verify that the request comes from the receiver
+            challenge = Challenges.objects.get(id = getId)
+            if (challenge.receiver != request.user):
+                return HttpResponse("Not the correct receiver. Forbidden", status = 403)
+        
+        return render(request, "pacman/index.html", {
+            "accept": accept,
+            "challengeId": getId
+        })
 
 # Login/logout/ register view adapted from previous projects
 

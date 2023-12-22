@@ -11,7 +11,7 @@ const VELOCITY_UNIT = 6;
 const GHOST_VELOCITY = VELOCITY_UNIT * 0.7;
 
 // Add momentum to smooth ghost movement
-const GHOST_MOMENTUM = 15;
+const GHOST_MOMENTUM = 10;
 
 let MAX_HEIGHT = 0;
 let MAX_WIDTH = 0;
@@ -213,7 +213,7 @@ class Ghost extends Player {
         this.last_direction = possible[min_post];
 
         if (this.momentum == 0){
-            this.momentum = GHOST_MOMENTUM;
+            this.momentum = Math.floor(Math.random() * GHOST_MOMENTUM) + GHOST_MOMENTUM;
         }
 
         // console.log("Chosen direction: ");

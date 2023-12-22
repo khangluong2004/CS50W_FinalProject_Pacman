@@ -11,7 +11,10 @@
     <div id="challengeFormDiv" class="centered" style="display: none;">
         <form id="challengeForm" class="form-inline">
             <input id="score" type="hidden" >
-            <div class="form-group mx-sm-3 mb-2">
+            {% if accept %}
+                <input id="challengeId" type="hidden" value="{{challengeId}}">
+            {% endif %}
+            <div id="receiverDiv" class="form-group mx-sm-3 mb-2">
                 <input id="receiverText" type="text" class="form-control" placeholder="Enter receiver's username">
             </div>
             <button id="challengeButton" type="submit" class="btn btn-primary mb-2"> Challenge </button>
@@ -45,6 +48,11 @@
 {% endblock %}
 
 {% block script %}
-    <script src="{% static 'pacman/challenge.js' %}"></script>
+    {% if accept %}
+        <script src="{% static 'pacman/acceptChallenge.js' %}"></script>
+    {% else %}
+        <script src="{% static 'pacman/challenge.js' %}"></script>
+    {% endif %}
+
     <script src="{% static 'pacman/indexPac.js' %}"></script>
 {% endblock %}
