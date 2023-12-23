@@ -32,7 +32,7 @@ The project is completely different from all other courses, as it's neither soci
 
 Satisfied complexity, mobile view and use at least 1 model requirement.
 
-FRONT-END (Javascript):
+**FRONT-END (Javascript):**
 
 Highly complex (and main) part of the project, using canvas to display the frame (showing the animation of the game). There are 4 main components:
 
@@ -55,7 +55,7 @@ Highly complex (and main) part of the project, using canvas to display the frame
 
 6. Pellets: The white dot to be eaten by the pacman to earn scores (with a delete state used to keep track of remaining pellets)
 
-MOBILE RESPONSIVE FEATURES:
+**MOBILE RESPONSIVE FEATURES:**
 
 1. Generated map based on the canvas/ screen width and height (thus displaying the map suited to all screen size).
 
@@ -63,7 +63,7 @@ MOBILE RESPONSIVE FEATURES:
 
 Other features are compatible with mobile view without any media queries
 
-BACKEND (Django):
+**BACKEND (Django):**
 
 Login/ logout/ register is adapted from 
 
@@ -73,7 +73,7 @@ Manage the logic of the challenge features (and rendering pages):
 3. /challenges/services/send: API to create a challenge with information on sender, receiver, bet_score.
 4. /challenges/services/update: API to send an "update" request by the receiver of the challenge with their score. The backend will determine who wins, and update the status with players' scores accordingly. 
 
-MODELS (SQLite):
+**MODELS (SQLite):**
 
 1. User: Inherit from Django's Abstract User, with added "score", "challenge_sent" and "challenge_win" attributes.
 2. Challenges: Store the challenge sent and its status (whether the receiver attempted, and who wins), with: "sender", "receiver", "timestamp", "bet_score", "sender_win" and "finalized" attributes.
@@ -100,7 +100,7 @@ templates:
 2. login, register: Login and register template adapated from previous projects.
 3. layout: The layout for all pages, including a taskbar, adapted from previous projects.
 
-BACKEND:
+### Backend:
 
 models.py: Containing the schema for Users and Challenges models (as described above).
 
