@@ -62,6 +62,10 @@ def update_challenge(request):
         sender = User.objects.get(username = challenge_entry.sender.username)
         receiver = User.objects.get(username = challenge_entry.receiver.username)
 
+        # Only challenge once before finalized
+        if (challenge_entry.finalized):
+            return HttpResponse("Already attempted. Forbidden.", status = 403)
+
         # Only correct receiver can call the function
         if (request.user != receiver):
             return HttpResponse("Incorrect receiver. Forbidden.", status = 403)
