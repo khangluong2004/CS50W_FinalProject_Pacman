@@ -10,7 +10,7 @@ A Pacman game (simplified with less fancy graphics but a harder ghost) on the Fr
 4. Request received: Contains the request received with status or the button to accept the challenges
 
 ## Rules:
-1. For Pacman: Normal rules: Eat the pellets for score, and avoid the red ghost.
+1. For Pacman: Normal rules: Eat the pellets for score, and avoid the red ghost. Use "WASD" keys to move, or use the movement buttons.
 2. For Challenge: Once finished a pacman game, the player A can challenge some other player B. If B accepts and scores >= A's score in the challenge, then A loses that amount of score, while B gains the score. In reverse, A gains the amount of score, while B loses the amount.
 
 A player's score in profile is only formed through score gain by challenging.
