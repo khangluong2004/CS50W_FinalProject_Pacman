@@ -22,7 +22,7 @@ A player's score in profile is only formed through score gain by challenging.
 ## Distinctiveness and Complexity
 
 ### Distinctiveness: 
-The project is completely different from all other courses, as it's neither social network or e-commerce page, but rather an interactive game. The complexity will be emphasized in complexity sections, but the parts that stands out from previous project include (almost the entire project):
+The project is completely different from all other course's projects, as it's neither social network nor e-commerce page, but rather an interactive game. The complexity will be emphasized in complexity sections, but the parts that stands out from previous project include (almost the entire project):
 
 1. Pacman Game (Javascript Frontend): Completely different from all previous projects, with the manipulation of HTML canvas to "animate" the game, while incorporating OOP to my best to keep track of the states of the game, player and the ghost.
 
