@@ -22,6 +22,7 @@
                     <p> <strong> Not attempted </strong></p>
                 {% endif %}
             {% else %}
+                <p> <strong> Bet Score: </strong> {{challenge.bet_score}} </p>
                 {% if challenge.sender_win %}
                     <p> <strong> Sender Win </strong> </p>
                 {% else %}

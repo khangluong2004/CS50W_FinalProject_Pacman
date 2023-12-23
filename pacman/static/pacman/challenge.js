@@ -17,8 +17,12 @@ function submitChallenge(event, challengeForm){
             "receiver": receiver,
             "bet_score": score
         })
-    }).then(response => response.json())
-    .then(response => console.log(response))
+    }).then(response => {
+        if (response.status == 201){
+            location.reload();
+        }
+        console.log(response);
+    })
 
     // Prevent default submission
     return false;

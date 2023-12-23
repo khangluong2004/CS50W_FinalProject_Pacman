@@ -11,6 +11,7 @@ class User(AbstractUser):
 class Challenges(models.Model):
     sender = models.ForeignKey("User", on_delete = models.CASCADE, related_name = "challenge_sender")
     receiver = models.ForeignKey("User", on_delete = models.CASCADE, related_name = "challenge_receiver")
+    timestamp = models.DateTimeField(auto_now_add = True)
     bet_score = models.IntegerField()
     sender_win = models.BooleanField()
     finalized = models.BooleanField()

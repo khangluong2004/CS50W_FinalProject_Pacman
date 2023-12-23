@@ -17,9 +17,9 @@ from .models import User, Challenges
 def get_challenge(request, mode):
     challenges = None
     if mode == "sent":
-        challenges = Challenges.objects.filter(sender = request.user).all()
+        challenges = Challenges.objects.filter(sender = request.user).order_by("-timestamp").all()
     elif mode == "received":
-        challenges = Challenges.objects.filter(receiver = request.user).all()
+        challenges = Challenges.objects.filter(receiver = request.user).order_by("-timestamp").all()
     print(challenges)
     return render(request, "pacman/challenge.html", {
         "mode": mode,

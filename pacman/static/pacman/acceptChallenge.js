@@ -22,8 +22,13 @@ function acceptSubmit(event, acceptForm){
             "id": id,
             "score": score
         })
-    }).then(response => response.json())
-    .then(response => console.log(response));
+    }).then(response => {
+        if (response.status == 201){
+            location.replace("/");
+        }
+        console.log(response);
+    })
 
+    // Prevent default submission
     return false;
 }
