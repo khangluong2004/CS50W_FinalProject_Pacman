@@ -24,9 +24,9 @@ A player's score in profile is only formed through score gain by challenging.
 ### Distinctiveness: 
 The project is completely different from all other course's projects, as it's neither social network nor e-commerce page, but rather an interactive game. The complexity will be emphasized in complexity sections, but the parts that stands out from previous project include (almost the entire project):
 
-1. Pacman Game (Javascript Frontend): Completely different from all previous projects, with the manipulation of HTML canvas to "animate" the game, while incorporating OOP to my best to keep track of the states of the game, player and the ghost.
+1. Pacman Game (Javascript Frontend): Completely different from all previous projects, with the manipulation of HTML canvas to "animate" the game, while incorporating OOP (to my best) to keep track of the states of the game, player and the ghost.
 
-2. Challenge function (Django Backend): The invitation features is distinct, allowing players to send challenge invitations, attempt the challenges and update the status of the challenge (and relevant player score).
+2. Challenge feature (Django Backend): The invitation features is distinct, allowing players to send challenge invitations, attempt the challenges and update the status of the challenge (and relevant players' score). This allows friends to compete with each other more easily.
 
 ### Complexity:
 
@@ -40,7 +40,7 @@ Highly complex (and main) part of the project, using canvas to display the frame
 
 2. Map: The game initial state is defined by a 2d-array map, which is generated based on the width and height of the screen (thus **mobile-responsive**), defining the wall, pellets, player and ghost initial position.
 
-3. Pacman: The yellow circle changes direction based on detection of "WASD" key pressed or movements button clicked. Contains the state of the scores, update the pellet states after "eating" it and contains prevention code to avoid going inside the walls.
+3. Pacman: The yellow circle changes direction based on detection of "WASD" key pressed or movements button clicked. Contains the state of the scores, update the pellet states to remove pellets after "eating" it and contains prevention code to avoid going inside the walls.
 
 4. Ghost: The red circle with automatic movement toward the yellow circle through heuristic/ greedy search, by checking all 4 directions and pick the one that is:
     - Not go inside the wall (primary criteria)
@@ -61,13 +61,13 @@ Highly complex (and main) part of the project, using canvas to display the frame
 
 2. Movement buttons: Allow mobile users to play (since they can't press WASD)
 
-Other features are compatible with mobile view without any media queries
+Other features are compatible with mobile view without any need for media queries
 
 **BACKEND (Django):**
 
-Login/ logout/ register is adapted from 
+Login/ logout/ register is adapted from previous course's projects.
 
-Manage the logic of the challenge features (and rendering pages):
+Manage the logic of the challenge features (and rendering pages). The API:
 1. /: Index page - Render the main Pacman page (for playing and accept challange), and change accordingly based on GET parameter
 2. /challenges/<str:mode> (with mode being "sent" or "received"): Render the page displaying all challenges sent/ received in reverse chronological order.
 3. /challenges/services/send: API to create a challenge with information on sender, receiver, bet_score.
