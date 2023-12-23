@@ -88,7 +88,7 @@ MODELS (SQLite):
 
 static:
 
-1. indexPac.js: Store all the codes managing the Pacman game with 4 objects: Player (base class for Pacman and Ghost to inherit), Pacman (the class for the actual pacman player), Ghost (inherited from Player) and GamePac (class managing all states of the game). 
+1. indexPac.js: Store all the codes managing the Pacman game with 4 classes: Player (base class for Pacman and Ghost to inherit), Pacman (the class for the actual pacman player), Ghost (inherited from Player) and GamePac (class managing all states of the game). 
 2. challenge.js: Store the code to set up the challenge form. Included in the index for playing/ challenging.
 3. acceptChallenge.js: Store the code to set up the accept challenge form. Included in the index when opened for accepting challenges.
 
