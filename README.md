@@ -46,10 +46,10 @@ Highly complex (and main) part of the project, using canvas to display the frame
 
 4. Ghost: The red circle with automatic movement toward the yellow circle through heuristic/ greedy search, by checking all 4 directions and pick the one that is:
     - Not go inside the wall (primary criteria)
-    - Not opposite to the previous direction, if possible
     - Minimize the Manhattan distance (since ghost and player can only move in x and y axis directions) between ghost and Pacman player, if possible
+    - If equal distance reduction, then randomize the direction chosen (preventing dead-end)
 
-    Momentum is also used, forcing the ghost to repeat the chosen directions a RANDOM number of times (between 10 and 20), to smoothen the movement and also allow the ghost to jump out/ squeeze in passage/ corner by randomizing the momentum. 
+    Momentum is also used, forcing the ghost to repeat the chosen directions a RANDOM number of times (between 10 and 20), to smoothen the movement, prevent moving immediately to opposite direction and also allow the ghost to jump out/ squeeze in passage/ corner by randomizing the momentum. 
 
     Ghost cannot go through walls, just like player (thus they inherit the same base class). 
 

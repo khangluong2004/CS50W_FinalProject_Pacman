@@ -7,8 +7,8 @@ const PACMAN_SIZE = SQUARE_SIZE * 0.4 - JIGGER;
 const PELLET_SIZE = 3;
 
 
-const VELOCITY_UNIT = 6;
-const GHOST_VELOCITY = VELOCITY_UNIT * 0.7;
+const VELOCITY_UNIT = 8;
+const GHOST_VELOCITY = Math.round(VELOCITY_UNIT * 0.6);
 
 // Add momentum to smooth ghost movement
 const GHOST_MOMENTUM = 10;
@@ -143,7 +143,7 @@ class Ghost extends Player {
             {x: -GHOST_VELOCITY, y: 0},
             {x: 0, y: -GHOST_VELOCITY}
         ];
-        this.opposite = [2, 3, 0, 1];
+        // this.opposite = [2, 3, 0, 1]; // No need for opposite prevention as momentum is implemented
         this.last_direction = -1;
         this.momentum = GHOST_MOMENTUM;
     }
@@ -171,15 +171,16 @@ class Ghost extends Player {
             return;   
         }
 
-        // Otherwise, pick one that gets closer to pacman and not the
-        // opposite of last move
+        // Otherwise, pick one that gets closer to pacman. If equally closer,
+        // randomize the choice.
         let min_diff = -1;
         let min_post = -1;
 
+        console.log("New check: ");
         for (let i=0; i < possible.length; i++){
-            if (possible[i] == this.opposite[this.last_direction]){
-                continue;
-            }
+            // if (possible[i] == this.opposite[this.last_direction]){
+            //     continue;
+            // }
 
             if (possible[i] == this.last_direction && this.momentum > 0){
                 this.momentum--;
@@ -201,10 +202,18 @@ class Ghost extends Player {
                 min_post = i;
             } else {
                 let new_diff = new_dist - pre_dist;
+                console.log(min_diff);
+                console.log(min_post);
+                console.log(`i at: ${new_diff}`);
 
                 if (new_diff < min_diff){
                     min_diff = new_diff;
                     min_post = i;
+                } else if (new_diff == min_diff){
+                    // Randomize if equal minimum distance
+                    if (Math.random() > 0.5){
+                        min_post = i;
+                    }
                 }
             }
         }
@@ -215,11 +224,6 @@ class Ghost extends Player {
         if (this.momentum == 0){
             this.momentum = Math.floor(Math.random() * GHOST_MOMENTUM) + GHOST_MOMENTUM;
         }
-
-        // console.log("Chosen direction: ");
-        // console.log(possible[min_post]);
-        // console.log("Last direction");
-        // console.log(this.last_direction);
 
         return;
     }
